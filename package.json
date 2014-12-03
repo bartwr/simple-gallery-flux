@@ -1,0 +1,20 @@
+{
+  "author": "Robin <robin@tuxion.nl>",
+  "name": "simple-gallery-flux",
+  "scripts": {
+    "start": "./node_modules/.bin/gulp"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.0",
+    "gulp-notify": "^2.0.1",
+    "gulp-plumber": "^0.6.6",
+    "gulp-rename": "^1.2.0",
+    "gulp-livereload": "^2.1.1",
+    "browserify": "^6.3.2",
+    "vinyl-transform": "^0.0.1",
+    "caching-coffeeify": "^0.4.0",
+    "coffee-reactify": "^0.4.0",
+    "xtend": "^3.0.0",
+    "del": "^0.1.3"
+  }
+}

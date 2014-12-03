@@ -1,0 +1,12 @@
+{
+  "name": "simple-gallery-flux",
+  "authors": [
+    "Tuxion",
+    "Robin <robin@tuxion.nl>"
+  ],
+  "dependencies": {
+    "react": "*",
+    "flux-plus": "*",
+    "elucidata-react-coffee": "~0.7.0"
+  }
+}
