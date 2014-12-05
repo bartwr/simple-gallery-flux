@@ -1,4 +1,4 @@
-prefix = '/rest/simple_gallery/'
+prefix = '/outdoormed/rest/simple_gallery/'
 
 Ajax = (method, resource, data) ->
   jQuery.ajax

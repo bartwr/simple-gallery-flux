@@ -12,7 +12,8 @@ var del = require('del');
 
 var paths = {
   entry: './src/index.coffee',
-  scripts: './src/**/*.(coffee|cjsx)',
+  scripts: './src/**/*.coffee',
+  views: './src/**/*.cjsx',
   output: './dist'
 };
 
@@ -75,7 +76,7 @@ gulp.task('watch', function() {
   
   reloader = livereload.listen();
   
-  gulp.watch([paths.entry, paths.scripts], ['build']);
+  gulp.watch([paths.entry, paths.scripts, paths.views], ['build']);
   
 });
 

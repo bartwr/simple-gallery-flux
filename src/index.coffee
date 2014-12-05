@@ -1,3 +1,4 @@
 module.exports =
-  SimpleGalleryTasks: require 'src/tasks/simple-gallery-tasks'
-  TestController: require 'src/views/test-controller'
+  Tasks: require 'src/tasks/tasks'
+  MainController: require 'src/views/main/main-controller'
+  RightButtonController: require 'src/views/right-button/right-button-controller'
