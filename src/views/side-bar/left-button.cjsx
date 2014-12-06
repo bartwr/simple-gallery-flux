@@ -15,7 +15,7 @@ class LeftButton extends Component
     nextImage = @getNextImage()
     <div className="block col1 thumbnail button" onClick={@_onClick}
       style={{backgroundImage: "url('#{nextImage.thumbnail}')"}}>
-      <div className="title-overlay">&lt;</div>
+      <div className="title-overlay"><i className="fa fa-chevron-left"></i></div>
     </div>
 
 module.exports = LeftButton.toComponent()
