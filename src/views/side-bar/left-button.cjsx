@@ -2,17 +2,17 @@ class LeftButton extends Component
   
   componentDidMount: ->
     if @props.activeCategory? and @props.activeImage?
-      jQuery(document).bind 'keypress', this, @_onKeyPress
+      jQuery(document).bind 'keyup', this, @_onKeyPress
     
   componentWillUpdate: (newProps) ->
     willBeActive = newProps.activeCategory? and newProps.activeImage?
     wasActive = @props.activeCategory? and @props.activeImage?
     
     if willBeActive and not wasActive
-      jQuery(document).bind 'keypress', this, @_onKeyPress
+      jQuery(document).bind 'keyup', this, @_onKeyPress
     
     if not willBeActive and wasActive
-      jQuery(document).unbind 'keypress', @_onKeyPress
+      jQuery(document).unbind 'keyup', this, @_onKeyPress
   
   getNextImage: ->
     currentIndex = @props.activeCategory.images.indexOf(parseInt(@props.activeImage.id, 10))
@@ -20,7 +20,7 @@ class LeftButton extends Component
     nextImage = @props.images[@props.activeCategory.images[nextIndex]]
   
   _onKeyPress: (e) ->
-    if e.key == 'Left'
+    if e.keyCode == 37
       e.data._onNext(e)
   
   _onNext: (e) ->

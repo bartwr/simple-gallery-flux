@@ -20,10 +20,10 @@ class RightButtonController extends Component
     wasActive = @state.activeCategory? and @state.activeImage?
     
     if willBeActive and not wasActive
-      jQuery(document).bind 'keypress', @_onKeyPress
+      jQuery(document).bind 'keyup', @_onKeyPress
     
     if not willBeActive and wasActive
-      jQuery(document).unbind 'keypress', @_onKeyPress
+      jQuery(document).unbind 'keyup', @_onKeyPress
   
   getInitialState: ->
     activeCategory: null
@@ -51,7 +51,7 @@ class RightButtonController extends Component
       images: ImageStore.getAll()
   
   _onKeyPress: (e) ->
-    if e.key == 'Right'
+    if e.keyCode == 39
       ((e) => @_onNext(e))(e)
   
   _onNext: (e) ->
