@@ -1,4 +1,8 @@
 class LeftButton extends Component
+  
+  componentDidMount: ->
+    if @props.activeCategory? and @props.activeImage?
+      jQuery(document).bind 'keypress', @_onKeyPress
     
   componentWillUpdate: (newProps) ->
     willBeActive = newProps.activeCategory? and newProps.activeImage?
