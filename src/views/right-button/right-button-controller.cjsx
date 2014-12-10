@@ -9,21 +9,13 @@ class RightButtonController extends Component
     CategoryStore.on 'change', @_onCategoryStoreChange
     GalleryStore.on 'change', @_onGalleryStoreChange
     ImageStore.on 'change', @_onImageStoreChange
+    jQuery(document).bind 'keyup', this, @_onKeyPress
   
   componentWillUnmount: ->
     CategoryStore.off 'change', @_onCategoryStoreChange
     GalleryStore.off 'change', @_onGalleryStoreChange
     ImageStore.off 'change', @_onImageStoreChange
-  
-  componentWillUpdate: (newProps, newState) ->
-    willBeActive = newState.activeCategory? and newState.activeImage?
-    wasActive = @state.activeCategory? and @state.activeImage?
-    
-    if willBeActive and not wasActive
-      jQuery(document).bind 'keyup', @_onKeyPress
-    
-    if not willBeActive and wasActive
-      jQuery(document).unbind 'keyup', @_onKeyPress
+    jQuery(document).unbind 'keyup', @_onKeyPress
   
   getInitialState: ->
     activeCategory: null
@@ -52,9 +44,10 @@ class RightButtonController extends Component
   
   _onKeyPress: (e) ->
     if e.keyCode == 39
-      ((e) => @_onNext(e))(e)
+      e.data._onNext(e)
   
   _onNext: (e) ->
+    return unless @state.activeCategory and @state.activeImage
     e.preventDefault()
     Tasks.openImage @getNextImage()
   
