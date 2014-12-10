@@ -50,7 +50,7 @@ class RightButtonController extends Component
     nextImage = @getNextImage()
     <div className="block col1 thumbnail button" onClick={@_onClick}
       style={{backgroundImage: "url('#{nextImage.thumbnail}')"}}>
-      <div className="title-overlay">&gt;</div>
+      <div className="title-overlay"><i className="fa fa-chevron-right"></i></div>
     </div>
 
 module.exports = RightButtonController.toComponent()
