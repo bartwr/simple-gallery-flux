@@ -15,6 +15,16 @@ class RightButtonController extends Component
     GalleryStore.off 'change', @_onGalleryStoreChange
     ImageStore.off 'change', @_onImageStoreChange
   
+  componentWillUpdate: (newProps, newState) ->
+    willBeActive = newState.activeCategory? and newState.activeImage?
+    wasActive = @state.activeCategory? and @state.activeImage?
+    
+    if willBeActive and not wasActive
+      jQuery(document).bind 'keypress', @_onKeyPress
+    
+    if not willBeActive and wasActive
+      jQuery(document).unbind 'keypress', @_onKeyPress
+  
   getInitialState: ->
     activeCategory: null
     activeImage: null
@@ -40,7 +50,11 @@ class RightButtonController extends Component
       activeImage: ImageStore.getActive()
       images: ImageStore.getAll()
   
-  _onClick: (e) ->
+  _onKeyPress: (e) ->
+    if e.key == 'Right'
+      ((e) => @_onNext(e))(e)
+  
+  _onNext: (e) ->
     e.preventDefault()
     Tasks.openImage @getNextImage()
   
@@ -48,7 +62,7 @@ class RightButtonController extends Component
     return <div></div> unless @state.activeCategory and @state.activeImage
     
     nextImage = @getNextImage()
-    <div className="block col1 thumbnail button" onClick={@_onClick}
+    <div className="block col1 thumbnail button" onClick={@_onNext}
       style={{backgroundImage: "url('#{nextImage.thumbnail}')"}}>
       <div className="title-overlay"><i className="fa fa-chevron-right"></i></div>
     </div>
