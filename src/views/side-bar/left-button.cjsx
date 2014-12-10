@@ -2,14 +2,14 @@ class LeftButton extends Component
   
   componentDidMount: ->
     if @props.activeCategory? and @props.activeImage?
-      jQuery(document).bind 'keypress', @_onKeyPress
+      jQuery(document).bind 'keypress', this, @_onKeyPress
     
   componentWillUpdate: (newProps) ->
     willBeActive = newProps.activeCategory? and newProps.activeImage?
     wasActive = @props.activeCategory? and @props.activeImage?
     
     if willBeActive and not wasActive
-      jQuery(document).bind 'keypress', @_onKeyPress
+      jQuery(document).bind 'keypress', this, @_onKeyPress
     
     if not willBeActive and wasActive
       jQuery(document).unbind 'keypress', @_onKeyPress
@@ -21,7 +21,7 @@ class LeftButton extends Component
   
   _onKeyPress: (e) ->
     if e.key == 'Left'
-      ((e) => @_onNext(e))(e)
+      e.data._onNext(e)
   
   _onNext: (e) ->
     e.preventDefault()
