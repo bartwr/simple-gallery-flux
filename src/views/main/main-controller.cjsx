@@ -69,12 +69,12 @@ class MainController extends Component
         <ImageThumbnailList category={@state.activeCategory} images={@state.images} onClick={@_onOpenImage} />
       </div>
     
-    # Image full screen
+    # Image full view
     <div>
       <SideBar onLeftButtonClick={@_onOpenImage} onOpenCategory={@_onOpenCategory}
         onOpenAlbums={@_onOpenAlbums} categories={@state.categories} activeCategory={@state.activeCategory}
         images={@state.images} activeImage={@state.activeImage} />
-      <ImageFullView image={@state.activeImage} />
+      <ImageFullView image={@state.activeImage} category={@state.activeCategory} />
     </div>
     
     
