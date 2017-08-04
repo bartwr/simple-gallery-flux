@@ -20,8 +20,8 @@ Then copy (at least) these files to the server.
 
 Always:
 
-	gulp -w 
+    gulp -w 
 
 First time:
 
-	npm install && bower install && npm install -g gulp && gulp -w
+    npm install && bower install && npm install -g gulp && gulp -w

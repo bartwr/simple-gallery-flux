@@ -9,8 +9,8 @@ class CategoryThumbnailList extends Component
     for id, item of @props.categories
       
       # Use the first image as category thumbnail.
-      image = @props.images[ item.images[0] ]
-      
+      image = if item.images then @props.images[ item.images[0] ] else ''
+ 
       items.push <CategoryThumbnailListItem key={id} category={item} image={image} onClick={@props.onClick} />
     
     <div className="category-thumbnail-list">

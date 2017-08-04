@@ -27,13 +27,22 @@ class MainController extends Component
     gallery: null
     images: null
   
+  sortCategories: (categories) ->
+    return categories if categories == undefined
+
+    Object.keys(categories).map(((key) ->
+      categories[key]
+    ), []).sort (a, b) ->
+      console.log parseInt(a.lft) < parseInt(b.lft);
+      return parseInt(a.lft) - parseInt(b.lft)
+
   _onGalleryStoreChange: ->
     @setState gallery: GalleryStore.getActive()
-  
+
   _onCategoryStoreChange: ->
     @setState
       activeCategory: CategoryStore.getActive()
-      categories: CategoryStore.getAll()
+      categories: @sortCategories( CategoryStore.getAll() )
   
   _onImageStoreChange: ->
     @setState
@@ -50,7 +59,7 @@ class MainController extends Component
     Tasks.openImage image
   
   render: ->
-    
+
     # Loading stage.
     unless @state.gallery and @state.categories and @state.images
       return <span>Loading...</span>
