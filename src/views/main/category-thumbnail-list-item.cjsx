@@ -6,7 +6,7 @@ class CategoryThumbnailListItem extends Component
   
   render: ->
     <div className="block col1 thumbnail" onClick={@_onClick}
-      style={{backgroundImage: "url('#{@props.image.thumbnail}')"}}>
+      style={{backgroundImage: "url('#{@props.image.thumbnail}')", width: '220px', float: 'none', maxWidth: '100%'}}>
       <div className="title-overlay">{@props.category.title}</div>
     </div>
 

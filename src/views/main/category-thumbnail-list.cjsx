@@ -13,9 +13,18 @@ class CategoryThumbnailList extends Component
  
       items.push <CategoryThumbnailListItem key={id} category={item} image={image} onClick={@props.onClick} />
     
-    <div className="category-thumbnail-list">
-      <div className="block col1 title">Albums</div>
+    <div className="category-thumbnail-list" style={s.categoryThumbnailList}>
+      <div className="block col1 title" style={s.titleBlock}>Albums</div>
       {items}
     </div>
+
+s =
+  categoryThumbnailList:
+    display: 'flex'
+    justifyContent: 'flex-start'
+    flexWrap: 'wrap'
+    marginLeft: '220px'
+  titleBlock:
+    display: 'block'
 
 module.exports = CategoryThumbnailList.toComponent()

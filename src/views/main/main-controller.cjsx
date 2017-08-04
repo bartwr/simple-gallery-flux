@@ -33,7 +33,6 @@ class MainController extends Component
     Object.keys(categories).map(((key) ->
       categories[key]
     ), []).sort (a, b) ->
-      console.log parseInt(a.lft) < parseInt(b.lft);
       return parseInt(a.lft) - parseInt(b.lft)
 
   _onGalleryStoreChange: ->
