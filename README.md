@@ -15,3 +15,13 @@ Then copy (at least) these files to the server.
 * `bower_components/*`
 * `dist/*`
 * `plugin.php`
+
+## Develop
+
+Always:
+
+	gulp -w 
+
+First time:
+
+	npm install && bower install && npm install -g gulp && gulp -w
