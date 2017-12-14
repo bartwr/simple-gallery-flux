@@ -1,4 +1,4 @@
 module.exports =
-  Tasks: require 'src/tasks/tasks'
-  MainController: require 'src/views/main/main-controller'
-  RightButtonController: require 'src/views/right-button/right-button-controller'
+  Tasks: require './tasks/tasks'
+  MainController: require './views/main/main-controller'
+  RightButtonController: require './views/right-button/right-button-controller'

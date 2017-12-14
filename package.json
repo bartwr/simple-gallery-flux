@@ -2,22 +2,26 @@
   "author": "Robin <robin@tuxion.nl>",
   "name": "simple-gallery-flux",
   "scripts": {
-    "start": "./node_modules/.bin/gulp"
+    "start": "webpack --config webpack.config.js",
+    "build": "webpack"
   },
   "devDependencies": {
-    "gulp": "^3.8.0",
-    "gulp-notify": "^2.0.1",
-    "gulp-plumber": "^0.6.6",
-    "gulp-rename": "^1.2.0",
-    "gulp-livereload": "^2.1.1",
-    "browserify": "^6.3.2",
-    "vinyl-transform": "^0.0.1",
-    "caching-coffeeify": "^0.4.0",
-    "coffee-reactify": "^0.4.0",
-    "xtend": "^3.0.0",
-    "del": "^0.1.3"
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-react-hmre": "^1.1.1",
+    "cjsx-loader": "^3.0.0",
+    "coffee-loader": "^0.7.2",
+    "coffee-script": "^1.10.0",
+    "webpack": "^1.15.0"
   },
   "dependencies": {
-    "react-swiper": "^0.1.4"
+    "webpack": "^3.10.0",
+    "radium": "^0.18.1",
+    "ramda": "^0.22.1",
+    "react": "^15.3.1",
+    "react-swiper": "^0.1.4",
+    "react-dom": "^15.3.1"
   }
 }

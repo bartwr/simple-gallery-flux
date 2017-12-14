@@ -1,4 +1,4 @@
-Dispatcher = require 'src/utils/dispatcher'
+Dispatcher = require '../utils/dispatcher'
 
 class CategoryStore extends FluxPlus.BaseStore
   entityName: 'categories'

@@ -1,6 +1,6 @@
 #React = require 'react';
 #Swiper = require 'react-swiper'
-Location = require 'src/utils/location'
+Location = require '../../utils/location'
 
 #React.initializeTouchEvents(true)
 

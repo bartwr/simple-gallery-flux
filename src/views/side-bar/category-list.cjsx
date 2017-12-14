@@ -1,5 +1,5 @@
 CategoryListItem = require './category-list-item'
-Location = require 'src/utils/location'
+Location = require '../../utils/location'
 
 class CategoryList extends Component
   

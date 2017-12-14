@@ -1,12 +1,12 @@
 CategoryThumbnailList = require './category-thumbnail-list'
 ImageThumbnailList = require './image-thumbnail-list'
 ImageFullView = require './image-full-view'
-SideBar = require 'src/views/side-bar/side-bar'
-CategoryStore = require 'src/stores/category-store'
-GalleryStore = require 'src/stores/gallery-store'
-ImageStore = require 'src/stores/image-store'
-Location = require 'src/utils/location'
-Tasks = require 'src/tasks/tasks'
+SideBar = require '../../views/side-bar/side-bar'
+CategoryStore = require '../../stores/category-store'
+GalleryStore = require '../../stores/gallery-store'
+ImageStore = require '../../stores/image-store'
+Location = require '../../utils/location'
+Tasks = require '../../tasks/tasks'
 
 class MainController extends Component
   

@@ -1,6 +1,6 @@
-CategoryStore = require 'src/stores/category-store'
-ImageStore = require 'src/stores/image-store'
-Tasks = require 'src/tasks/tasks'
+CategoryStore = require '../stores/category-store'
+ImageStore = require '../stores/image-store'
+Tasks = require '../tasks/tasks'
 
 class Location
   

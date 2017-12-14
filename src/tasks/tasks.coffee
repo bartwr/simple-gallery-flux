@@ -1,5 +1,5 @@
-Api = require 'src/utils/api'
-Dispatcher = require 'src/utils/dispatcher'
+Api = require '../utils/api'
+Dispatcher = require '../utils/dispatcher'
 Action = FluxPlus.Action
 ActionSource = FluxPlus.ActionSource
 EntityOperation = FluxPlus.EntityOperation

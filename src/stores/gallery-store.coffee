@@ -1,4 +1,4 @@
-Dispatcher = require 'src/utils/dispatcher'
+Dispatcher = require '../utils/dispatcher'
 
 class GalleryStore extends FluxPlus.BaseStore
   entityName: 'galleries'

@@ -1,7 +1,7 @@
-CategoryStore = require 'src/stores/category-store'
-GalleryStore = require 'src/stores/gallery-store'
-ImageStore = require 'src/stores/image-store'
-Tasks = require 'src/tasks/tasks'
+CategoryStore = require '../../stores/category-store'
+GalleryStore = require '../../stores/gallery-store'
+ImageStore = require '../../stores/image-store'
+Tasks = require '../../tasks/tasks'
 
 class RightButtonController extends Component
   

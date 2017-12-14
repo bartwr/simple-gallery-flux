@@ -1,13 +1,13 @@
 # Simple gallery flux
 
-Outdoor medicine version.
+Outdoor Medicine version.
 
 ## Required on live setup
 
 First install and build locally.
 
 ```sh
-npm install && bower install && ./node_modules/.bin/gulp build
+npm install && bower install && npm run build
 ```
 
 Then copy (at least) these files to the server.
@@ -20,8 +20,8 @@ Then copy (at least) these files to the server.
 
 Always:
 
-    gulp -w 
+    npm run start
 
 First time:
 
-    npm install && bower install && npm install -g gulp && gulp -w
+    npm install && bower install && npm run start

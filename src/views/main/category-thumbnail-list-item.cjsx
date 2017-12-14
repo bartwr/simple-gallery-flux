@@ -1,3 +1,5 @@
+import React, { Component } from 'react';
+
 class CategoryThumbnailListItem extends Component
   
   _onClick: (e) ->
@@ -10,4 +12,4 @@ class CategoryThumbnailListItem extends Component
       <div className="title-overlay">{@props.category.title}</div>
     </div>
 
-module.exports = CategoryThumbnailListItem.toComponent()
+module.exports = CategoryThumbnailListItem
