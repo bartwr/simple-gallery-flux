@@ -1,3 +1,5 @@
+import React, {Component} from 'react'
+
 import VideoThumbnailListItem from './video-thumbnail-list-item'
 import ImageThumbnailListItem from './image-thumbnail-list-item'
 
@@ -13,11 +15,10 @@ class ImageThumbnailList extends Component
     if @props.category.images
       for id in @props.category.images
         image = @props.images[id]
-        items.push <ImageThumbnailListItem key={id} image={image} onClick={@props.onClick} />
+        items.push <ImageThumbnailListItem key={id} image={image} onClick={@props.onClick.bind(@)} />
     
     <div className="image-thumbnail-list" style={s.imageThumbnailList}>
       <div className="block col1 title">{@props.category.title}</div>
-      {items}
     </div>
 
 s =

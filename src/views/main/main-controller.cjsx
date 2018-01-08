@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import CategoryThumbnailList from './category-thumbnail-list'
 import ImageThumbnailList from './image-thumbnail-list'
 import ImageFullView from './image-full-view'
-import SideBar from '../../views/side-bar/side-bar'
+import SideBar from '../side-bar/side-bar'
 import CategoryStore from '../../stores/category-store'
 import GalleryStore from '../../stores/gallery-store'
 import ImageStore from '../../stores/image-store'
@@ -21,14 +21,14 @@ class MainController extends Component
       images: null
 
   componentDidMount: ->
-    CategoryStore.on 'change', @_onCategoryStoreChange
-    GalleryStore.on 'change', @_onGalleryStoreChange
-    ImageStore.on 'change', @_onImageStoreChange
+    CategoryStore.on 'change', @_onCategoryStoreChange.bind(@)
+    GalleryStore.on 'change', @_onGalleryStoreChange.bind(@)
+    ImageStore.on 'change', @_onImageStoreChange.bind(@)
   
   componentWillUnmount: ->
-    CategoryStore.off 'change', @_onCategoryStoreChange
-    GalleryStore.off 'change', @_onGalleryStoreChange
-    ImageStore.off 'change', @_onImageStoreChange
+    CategoryStore.off 'change', @_onCategoryStoreChange.bind(@)
+    GalleryStore.off 'change', @_onGalleryStoreChange.bind(@)
+    ImageStore.off 'change', @_onImageStoreChange.bind(@)
   
   sortCategories: (categories) ->
     return categories if categories == undefined
@@ -39,9 +39,11 @@ class MainController extends Component
       return parseInt(a.lft) - parseInt(b.lft)
 
   _onGalleryStoreChange: ->
+    console.log('_onGalleryStoreChange')
     @setState gallery: GalleryStore.getActive()
 
   _onCategoryStoreChange: ->
+    console.log('_onCategoryStoreChange')
     @setState
       activeCategory: CategoryStore.getActive()
       categories: @sortCategories( CategoryStore.getAll() )
@@ -71,21 +73,22 @@ class MainController extends Component
     # Category list
     unless @state.activeCategory
       return <div>
-        <CategoryThumbnailList categories={@state.categories} images={@state.images} onClick={@_onOpenCategory} />
+        <CategoryThumbnailList categories={@state.categories} images={@state.images} onClick={@_onOpenCategory.bind(@)} />
       </div>
     
     # Image list
     unless @state.activeImage
+      console.log('Image List')
       return <div>
-        <SideBar onOpenCategory={@_onOpenCategory} onOpenAlbums={@_onOpenAlbums}
-          categories={@state.categories} activeCategory={@state.activeCategory} />
-        <ImageThumbnailList category={@state.activeCategory} images={@state.images} onClick={@_onOpenImage} />
+        <SideBar onOpenCategory={@_onOpenCategory.bind(@)} onOpenAlbums={@_onOpenAlbums.bind(@)} categories={@state.categories} activeCategory={@state.activeCategory} />
+        <ImageThumbnailList category={@state.activeCategory} images={@state.images} onClick={@_onOpenImage.bind(@)} />
       </div>
     
     # Image full view
+    console.log('MainController: Image full view')
     <div>
-      <SideBar onLeftButtonClick={@_onOpenImage} onOpenCategory={@_onOpenCategory}
-        onOpenAlbums={@_onOpenAlbums} categories={@state.categories} activeCategory={@state.activeCategory}
+      <SideBar onLeftButtonClick={@_onOpenImage.bind(@)} onOpenCategory={@_onOpenCategory.bind(@)}
+        onOpenAlbums={@_onOpenAlbums.bind(@)} categories={@state.categories} activeCategory={@state.activeCategory}
         images={@state.images} activeImage={@state.activeImage} />
       <ImageFullView image={@state.activeImage} category={@state.activeCategory} />
     </div>

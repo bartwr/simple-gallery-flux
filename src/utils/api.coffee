@@ -1,4 +1,4 @@
-prefix = '/rest/simple_gallery/'
+prefix = (if document.location.hostname == 'localhost' then '/outdoormedicine.org' else '') + '/rest/simple_gallery/'
 
 Ajax = (method, resource, data) ->
   jQuery.ajax

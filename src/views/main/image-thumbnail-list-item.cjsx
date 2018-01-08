@@ -1,3 +1,5 @@
+import React, {Component} from 'react'
+
 class ImageThumbnailListItem extends Component
   
   _onClick: (e) ->
@@ -9,7 +11,7 @@ class ImageThumbnailListItem extends Component
     if @props.image.is_video == true
       triangle = <div className="play-triangle"></div>
 
-    <div className="block col1 thumbnail" onClick={@_onClick}
+    <div className="block col1 thumbnail" onClick={@_onClick.bind(@)}
       style={{backgroundImage: "url('#{@props.image.thumbnail}')"}}>
       <div className="title-overlay"></div>
       {triangle}

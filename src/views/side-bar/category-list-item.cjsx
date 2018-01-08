@@ -8,8 +8,9 @@ class CategoryListItem extends Component
     @props.onClick @props.category
   
   render: ->
+    console.log('CategoryListItem')
     <li className={if @props.isActive then 'active'}>
-      <a href={Location.getPath @props.category} onClick={@_onClick}>{@props.category.title}</a>
+      <a href={Location.getPath @props.category} onClick={@_onClick.bind(@)}>{@props.category.title}</a>
     </li>
 
 export default CategoryListItem

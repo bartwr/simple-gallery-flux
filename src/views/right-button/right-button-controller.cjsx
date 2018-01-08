@@ -15,16 +15,16 @@ class RightButtonController extends Component
       images: null
     
   componentDidMount: ->
-    CategoryStore.on 'change', @_onCategoryStoreChange
-    GalleryStore.on 'change', @_onGalleryStoreChange
-    ImageStore.on 'change', @_onImageStoreChange
-    jQuery(document).bind 'keyup', this, @_onKeyPress
+    CategoryStore.on 'change', @_onCategoryStoreChange.bind(@)
+    GalleryStore.on 'change', @_onGalleryStoreChange.bind(@)
+    ImageStore.on 'change', @_onImageStoreChange.bind(@)
+    jQuery(document).bind 'keyup', this, @_onKeyPress.bind(@)
   
   componentWillUnmount: ->
-    CategoryStore.off 'change', @_onCategoryStoreChange
-    GalleryStore.off 'change', @_onGalleryStoreChange
-    ImageStore.off 'change', @_onImageStoreChange
-    jQuery(document).unbind 'keyup', @_onKeyPress
+    CategoryStore.off 'change', @_onCategoryStoreChange.bind(@)
+    GalleryStore.off 'change', @_onGalleryStoreChange.bind(@)
+    ImageStore.off 'change', @_onImageStoreChange.bind(@)
+    jQuery(document).unbind 'keyup', @_onKeyPress.bind(@)
   
   getNextImage: ->
     currentIndex = @state.activeCategory.images.indexOf(parseInt(@state.activeImage.id, 10))

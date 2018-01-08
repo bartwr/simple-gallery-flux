@@ -1,5 +1,7 @@
+import React, {Component} from 'react'
+
 class LeftButton extends Component
-  
+
   componentDidMount: ->
     jQuery(document).bind 'keyup', this, @_onKeyPress
     
@@ -24,7 +26,7 @@ class LeftButton extends Component
     return <div></div> unless @props.activeCategory and @props.activeImage
     
     nextImage = @getNextImage()
-    <div className="block col1 thumbnail button" onClick={@_onNext}
+    <div className="block col1 thumbnail button" onClick={@_onNext.bind(@)}
       style={{backgroundImage: "url('#{nextImage.thumbnail}')"}}>
       <div className="title-overlay"><i className="fa fa-chevron-left"></i></div>
     </div>
