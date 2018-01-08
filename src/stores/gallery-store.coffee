@@ -1,6 +1,6 @@
-Dispatcher = require '../utils/dispatcher'
+import Dispatcher from '../utils/dispatcher'
 
 class GalleryStore extends FluxPlus.BaseStore
   entityName: 'galleries'
 
-module.exports = new GalleryStore(Dispatcher)
+export default new GalleryStore(Dispatcher)

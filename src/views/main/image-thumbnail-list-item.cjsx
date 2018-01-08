@@ -15,4 +15,4 @@ class ImageThumbnailListItem extends Component
       {triangle}
     </div>
 
-module.exports = ImageThumbnailListItem.toComponent()
+export default ImageThumbnailListItem

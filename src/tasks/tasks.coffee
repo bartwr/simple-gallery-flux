@@ -1,10 +1,10 @@
-Api = require '../utils/api'
-Dispatcher = require '../utils/dispatcher'
+import Api from '../utils/api'
+import Dispatcher from '../utils/dispatcher'
 Action = FluxPlus.Action
 ActionSource = FluxPlus.ActionSource
 EntityOperation = FluxPlus.EntityOperation
 
-module.exports =
+export default
   
   initializeGallery: (gallery, category, image) ->
     

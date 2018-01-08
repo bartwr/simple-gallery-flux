@@ -29,4 +29,4 @@ class LeftButton extends Component
       <div className="title-overlay"><i className="fa fa-chevron-left"></i></div>
     </div>
 
-module.exports = LeftButton.toComponent()
+export default LeftButton

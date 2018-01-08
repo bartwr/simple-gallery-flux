@@ -12,4 +12,4 @@ class CategoryThumbnailListItem extends Component
       <div className="title-overlay">{@props.category.title}</div>
     </div>
 
-module.exports = CategoryThumbnailListItem
+export default CategoryThumbnailListItem

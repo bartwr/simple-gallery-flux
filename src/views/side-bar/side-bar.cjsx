@@ -1,5 +1,5 @@
-CategoryList = require './category-list'
-LeftButton = require './left-button'
+import CategoryList from './category-list'
+import LeftButton from './left-button'
 
 class SideBar extends Component
   
@@ -12,4 +12,4 @@ class SideBar extends Component
         categories={@props.categories} activeCategory={@props.activeCategory} />
     </div>
 
-module.exports = SideBar.toComponent()
+export default SideBar

@@ -1,7 +1,10 @@
-CategoryListItem = require './category-list-item'
-Location = require '../../utils/location'
+import CategoryListItem from './category-list-item'
+import Location from '../../utils/location'
 
 class CategoryList extends Component
+
+  constructor: (props) ->
+    super(props)
   
   _onClickAlbums: (e) ->
     e.preventDefault()
@@ -20,4 +23,4 @@ class CategoryList extends Component
       <ul>{items}</ul>
     </div>
 
-module.exports = CategoryList.toComponent()
+export default CategoryList

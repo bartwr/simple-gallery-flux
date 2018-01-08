@@ -1,5 +1,5 @@
-VideoThumbnailListItem = require './video-thumbnail-list-item'
-ImageThumbnailListItem = require './image-thumbnail-list-item'
+import VideoThumbnailListItem from './video-thumbnail-list-item'
+import ImageThumbnailListItem from './image-thumbnail-list-item'
 
 class ImageThumbnailList extends Component
   
@@ -27,4 +27,4 @@ s =
     flexWrap: 'wrap'
     marginLeft: '220px'
 
-module.exports = ImageThumbnailList.toComponent()
+export default ImageThumbnailList

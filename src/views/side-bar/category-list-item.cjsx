@@ -12,4 +12,4 @@ class CategoryListItem extends Component
       <a href={Location.getPath @props.category} onClick={@_onClick}>{@props.category.title}</a>
     </li>
 
-module.exports = CategoryListItem
+export default CategoryListItem

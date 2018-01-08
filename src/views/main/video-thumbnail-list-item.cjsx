@@ -11,4 +11,4 @@ class VideoThumbnailListItem extends Component
       <div className="play-triangle"></div>
     </div>
 
-module.exports = VideoThumbnailListItem.toComponent()
+export default VideoThumbnailListItem

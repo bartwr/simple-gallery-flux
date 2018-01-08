@@ -1,15 +1,25 @@
-CategoryThumbnailList = require './category-thumbnail-list'
-ImageThumbnailList = require './image-thumbnail-list'
-ImageFullView = require './image-full-view'
-SideBar = require '../../views/side-bar/side-bar'
-CategoryStore = require '../../stores/category-store'
-GalleryStore = require '../../stores/gallery-store'
-ImageStore = require '../../stores/image-store'
-Location = require '../../utils/location'
-Tasks = require '../../tasks/tasks'
+import React, { Component } from 'react'
+
+import CategoryThumbnailList from './category-thumbnail-list'
+import ImageThumbnailList from './image-thumbnail-list'
+import ImageFullView from './image-full-view'
+import SideBar from '../../views/side-bar/side-bar'
+import CategoryStore from '../../stores/category-store'
+import GalleryStore from '../../stores/gallery-store'
+import ImageStore from '../../stores/image-store'
+import Location from '../../utils/location'
+import Tasks from '../../tasks/tasks'
 
 class MainController extends Component
-  
+    
+  constructor: ->
+    @state =
+      activeCategory: null
+      activeImage: null
+      categories: null
+      gallery: null
+      images: null
+
   componentDidMount: ->
     CategoryStore.on 'change', @_onCategoryStoreChange
     GalleryStore.on 'change', @_onGalleryStoreChange
@@ -19,13 +29,6 @@ class MainController extends Component
     CategoryStore.off 'change', @_onCategoryStoreChange
     GalleryStore.off 'change', @_onGalleryStoreChange
     ImageStore.off 'change', @_onImageStoreChange
-  
-  getInitialState: ->
-    activeCategory: null
-    activeImage: null
-    categories: null
-    gallery: null
-    images: null
   
   sortCategories: (categories) ->
     return categories if categories == undefined
@@ -59,9 +62,11 @@ class MainController extends Component
   
   render: ->
 
+    console.log @state
+
     # Loading stage.
     unless @state.gallery and @state.categories and @state.images
-      return <span>Loading...</span>
+      return <span>Loading ...</span>
     
     # Category list
     unless @state.activeCategory
@@ -85,5 +90,4 @@ class MainController extends Component
       <ImageFullView image={@state.activeImage} category={@state.activeCategory} />
     </div>
     
-    
-module.exports = MainController.toComponent()
+export default MainController

@@ -1,6 +1,6 @@
-Dispatcher = require '../utils/dispatcher'
+import Dispatcher from '../utils/dispatcher'
 
 class CategoryStore extends FluxPlus.BaseStore
   entityName: 'categories'
 
-module.exports = new CategoryStore(Dispatcher)
+export default new CategoryStore(Dispatcher)

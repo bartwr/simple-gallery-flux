@@ -1,8 +1,5 @@
-#React = require 'react';
-#Swiper = require 'react-swiper'
-Location = require '../../utils/location'
-
-#React.initializeTouchEvents(true)
+import React, {Component} from 'react';
+import Location from '../../utils/location'
 
 class ImageFullView extends Component
   
@@ -37,4 +34,4 @@ class ImageFullView extends Component
     
     </div>
 
-module.exports = ImageFullView.toComponent()
+export default ImageFullView

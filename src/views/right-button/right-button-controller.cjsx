@@ -1,10 +1,19 @@
-CategoryStore = require '../../stores/category-store'
-GalleryStore = require '../../stores/gallery-store'
-ImageStore = require '../../stores/image-store'
-Tasks = require '../../tasks/tasks'
+import React, {Component} from 'react'
+import CategoryStore from '../../stores/category-store'
+import GalleryStore from '../../stores/gallery-store'
+import ImageStore from '../../stores/image-store'
+import Tasks from '../../tasks/tasks'
 
 class RightButtonController extends Component
   
+  constructor: ->
+    @state = 
+      activeCategory: null
+      activeImage: null
+      categories: null
+      gallery: null
+      images: null
+    
   componentDidMount: ->
     CategoryStore.on 'change', @_onCategoryStoreChange
     GalleryStore.on 'change', @_onGalleryStoreChange
@@ -16,13 +25,6 @@ class RightButtonController extends Component
     GalleryStore.off 'change', @_onGalleryStoreChange
     ImageStore.off 'change', @_onImageStoreChange
     jQuery(document).unbind 'keyup', @_onKeyPress
-  
-  getInitialState: ->
-    activeCategory: null
-    activeImage: null
-    categories: null
-    gallery: null
-    images: null
   
   getNextImage: ->
     currentIndex = @state.activeCategory.images.indexOf(parseInt(@state.activeImage.id, 10))
@@ -60,4 +62,4 @@ class RightButtonController extends Component
       <div className="title-overlay"><i className="fa fa-chevron-right"></i></div>
     </div>
 
-module.exports = RightButtonController.toComponent()
+export default RightButtonController

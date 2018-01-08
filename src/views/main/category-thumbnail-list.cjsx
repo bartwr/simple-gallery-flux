@@ -1,4 +1,5 @@
-CategoryThumbnailListItem = require './category-thumbnail-list-item'
+import React, {Component} from 'react'
+import CategoryThumbnailListItem from './category-thumbnail-list-item'
 
 class CategoryThumbnailList extends Component
   
@@ -27,4 +28,4 @@ s =
   titleBlock:
     display: 'block'
 
-module.exports = CategoryThumbnailList.toComponent()
+export default CategoryThumbnailList

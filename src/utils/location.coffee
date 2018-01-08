@@ -1,6 +1,6 @@
-CategoryStore = require '../stores/category-store'
-ImageStore = require '../stores/image-store'
-Tasks = require '../tasks/tasks'
+import CategoryStore from '../stores/category-store'
+import ImageStore from '../stores/image-store'
+import Tasks from '../tasks/tasks'
 
 class Location
   
@@ -84,4 +84,4 @@ class Location
     action()
     @deaf = false
   
-module.exports = new Location
+export default new Location
