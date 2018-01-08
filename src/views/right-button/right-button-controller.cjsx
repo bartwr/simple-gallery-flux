@@ -1,7 +1,10 @@
 import React, {Component} from 'react'
+import Radium, {StyleRoot} from 'radium';
+
 import CategoryStore from '../../stores/category-store'
 import GalleryStore from '../../stores/gallery-store'
 import ImageStore from '../../stores/image-store'
+
 import Tasks from '../../tasks/tasks'
 
 class RightButtonController extends Component
@@ -57,9 +60,17 @@ class RightButtonController extends Component
     return <div></div> unless @state.activeCategory and @state.activeImage
     
     nextImage = @getNextImage()
-    <div className="block col1 thumbnail button" onClick={@_onNext}
-      style={{backgroundImage: "url('#{nextImage.thumbnail}')"}}>
+    <StyleRoot className="block thumbnail button" onClick={@_onNext.bind(@)}
+      style={Object.assign({}, {backgroundImage: "url('#{nextImage.thumbnail}')"}, s.base)}>
       <div className="title-overlay"><i className="fa fa-chevron-right"></i></div>
-    </div>
+    </StyleRoot>
 
-export default RightButtonController
+s = {
+  base: {
+    '@media (max-width: 800px)': {
+      display: 'none'
+    }
+  }
+}
+
+export default Radium(RightButtonController)

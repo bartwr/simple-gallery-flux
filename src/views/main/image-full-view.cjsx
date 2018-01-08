@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import Radium, {StyleRoot} from 'radium';
+
 import Location from '../../utils/location'
 
 class ImageFullView extends Component
@@ -17,21 +19,26 @@ class ImageFullView extends Component
     facebook_url = 'http://www.facebook.com/sharer.php?t=Check this image in the Outdoor Medicine gallery&u=https://www.outdoormedicine.org' + Location.getPath @props.category, @props.image
 
     if @props.image.is_video == true
-      media_html = <iframe style={'border': 'none'} src={embed_url}  className="block col3 fullscreen-image" width="100%" height="480" border="0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+      media_html = <iframe style={'border': 'none'} src={embed_url} className="fullscreen-image" width="100%" height="480" style={s.imageFull} border="0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
     else
-      media_html = <img src={@props.image.full} className="block col3 fullscreen-image" />
+      media_html = <img src={@props.image.full} className="fullscreen-image" style={s.imageFull} />
 
-    <div onClick={@_onSwipeRight} className="simple-gallery-image-full-view col3 float-left">
-
+    <StyleRoot onClick={@_onSwipeRight} className="simple-gallery-image-full-view" style={s.base}>
       {media_html}
+    </StyleRoot>
 
-      <div className="block col1 title">
-        Share on &raquo;
-      </div>
-      
-      <a className="block twitter title col1" href={twitter_url} title="Share this page on Twitter" target="_blank"></a>
-      <a className="block facebook col1" href={facebook_url} target="_blank" title="Share this page on Facebook"></a>
-    
-    </div>
+s = {
+  base: {
+    flex: 1
+    '@media(max-width: 800px)': {
+      flex: '1 1 100%'
+    }
+  }
+  imageFull: {
+    margin: '15px 0'
+    width: '100%'
+    maxWidth: '100%'
+  }
+}
 
-export default ImageFullView
+export default Radium(ImageFullView)

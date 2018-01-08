@@ -1,4 +1,6 @@
 import React, {Component} from 'react'
+import Radium, {StyleRoot} from 'radium';
+
 import CategoryThumbnailListItem from './category-thumbnail-list-item'
 
 class CategoryThumbnailList extends Component
@@ -15,17 +17,19 @@ class CategoryThumbnailList extends Component
       items.push <CategoryThumbnailListItem key={id} category={item} image={image} onClick={@props.onClick.bind(@)} />
     
     <div className="category-thumbnail-list" style={s.categoryThumbnailList}>
-      <div className="block col1 title" style={s.titleBlock}>Albums</div>
+      <StyleRoot className="block col1 title" style={s.titleBlock}>Albums</StyleRoot>
       {items}
     </div>
 
 s =
   categoryThumbnailList:
     display: 'flex'
+    flex: 1
     justifyContent: 'flex-start'
     flexWrap: 'wrap'
-    marginLeft: '220px'
   titleBlock:
     display: 'block'
+    '@media(max-width: 800px)':
+      display: 'none'
 
-export default CategoryThumbnailList
+export default Radium(CategoryThumbnailList)

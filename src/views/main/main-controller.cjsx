@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Radium, {StyleRoot} from 'radium';
 
 import CategoryThumbnailList from './category-thumbnail-list'
 import ImageThumbnailList from './image-thumbnail-list'
@@ -39,11 +40,9 @@ class MainController extends Component
       return parseInt(a.lft) - parseInt(b.lft)
 
   _onGalleryStoreChange: ->
-    console.log('_onGalleryStoreChange')
     @setState gallery: GalleryStore.getActive()
 
   _onCategoryStoreChange: ->
-    console.log('_onCategoryStoreChange')
     @setState
       activeCategory: CategoryStore.getActive()
       categories: @sortCategories( CategoryStore.getAll() )
@@ -64,33 +63,47 @@ class MainController extends Component
   
   render: ->
 
-    console.log @state
-
     # Loading stage.
     unless @state.gallery and @state.categories and @state.images
       return <span>Loading ...</span>
     
     # Category list
     unless @state.activeCategory
-      return <div>
+      return <div style={s.flex}>
         <CategoryThumbnailList categories={@state.categories} images={@state.images} onClick={@_onOpenCategory.bind(@)} />
       </div>
     
     # Image list
     unless @state.activeImage
-      console.log('Image List')
-      return <div>
+      return <div style={s.flex}>
+        <StyleRoot onClick={() => document.location = '/gallery'} className="btn" style={Object.assign({}, s.back, {marginLeft: '15px', marginRight: '15px', marginBottom: '15px'})}>Terug naar albums</StyleRoot>
         <SideBar onOpenCategory={@_onOpenCategory.bind(@)} onOpenAlbums={@_onOpenAlbums.bind(@)} categories={@state.categories} activeCategory={@state.activeCategory} />
         <ImageThumbnailList category={@state.activeCategory} images={@state.images} onClick={@_onOpenImage.bind(@)} />
       </div>
     
     # Image full view
-    console.log('MainController: Image full view')
-    <div>
+    <div style={s.flex}>
+      <StyleRoot onClick={() => document.location = '/gallery'} className="btn" style={Object.assign({}, s.back)}>Terug naar albums</StyleRoot>
       <SideBar onLeftButtonClick={@_onOpenImage.bind(@)} onOpenCategory={@_onOpenCategory.bind(@)}
         onOpenAlbums={@_onOpenAlbums.bind(@)} categories={@state.categories} activeCategory={@state.activeCategory}
         images={@state.images} activeImage={@state.activeImage} />
       <ImageFullView image={@state.activeImage} category={@state.activeCategory} />
     </div>
+
+s = {
+  flex: {
+    display: 'flex'
+    justifyContent: 'space-between'
+    flexFlow: 'row wrap',
+  },
+  back: {
+    width: '100%',
+    display: 'inline-block',
+    marginTop: '15px'
+    '@media(min-width: 801px)': {
+      display: 'none'
+    }
+  }
+}
     
-export default MainController
+export default Radium(MainController)

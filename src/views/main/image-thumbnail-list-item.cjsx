@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import Radium, {StyleRoot} from 'radium';
 
 class ImageThumbnailListItem extends Component
   
@@ -11,10 +12,21 @@ class ImageThumbnailListItem extends Component
     if @props.image.is_video == true
       triangle = <div className="play-triangle"></div>
 
-    <div className="block col1 thumbnail" onClick={@_onClick.bind(@)}
-      style={{backgroundImage: "url('#{@props.image.thumbnail}')"}}>
+    <StyleRoot className="block col1 thumbnail" onClick={@_onClick.bind(@)}
+      style={Object.assign({}, backgroundImage: "url('#{@props.image.thumbnail}')", s.base)}>
       <div className="title-overlay"></div>
       {triangle}
-    </div>
+    </StyleRoot>
 
-export default ImageThumbnailListItem
+s = {
+  base: {
+    width: '220px'
+    float: 'none'
+    maxWidth: '100%'
+    '@media(max-width: 800px)': {
+      width: '100%'
+    }
+  }
+}
+
+export default Radium(ImageThumbnailListItem)

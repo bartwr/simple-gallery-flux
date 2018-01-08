@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Radium, {StyleRoot} from 'radium';
 
 class CategoryThumbnailListItem extends Component
   
@@ -10,9 +11,20 @@ class CategoryThumbnailListItem extends Component
     @props.onClick @props.category
   
   render: ->
-    <div className="block col1 thumbnail" onClick={@_onClick.bind(@)}
-      style={{backgroundImage: "url('#{@props.image.thumbnail}')", width: '220px', float: 'none', maxWidth: '100%'}}>
+    <StyleRoot className="block col1 thumbnail" onClick={@_onClick.bind(@)}
+      style={Object.assign({}, backgroundImage: "url('#{@props.image.thumbnail}')", s.base)}>
       <div className="title-overlay">{@props.category.title}</div>
-    </div>
+    </StyleRoot>
 
-export default CategoryThumbnailListItem
+s = {
+  base: {
+    width: '220px'
+    float: 'none'
+    maxWidth: '100%'
+    '@media(max-width: 800px)': {
+      width: '100%'
+    }
+  }
+}
+
+export default Radium(CategoryThumbnailListItem)
